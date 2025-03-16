@@ -1,0 +1,55 @@
+.nav {
+    background-color: #ff6f61; /* You can change the color */
+    color: white;
+    text-align: left;
+    padding: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    margin-bottom: 50px;
+}
+
+.login-button {
+    background-color: white;
+    color: #ff6f61;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.staff {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px; /* Adjust the gap between items */
+    margin-top: 30px;
+    /* justify-items: center; */
+}
+
+.stylist {
+    text-align: center;
+}
+
+.stylist-photo {
+    width: 300px;
+    height: 300px;
+    /* object-fit: cover; */
+    /* border-radius: 100%; */
+}
+
+.styles, .environment {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.social-icons {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.social-icons img {
+    width: 40px;
+    margin: 0 15px;
+    cursor: pointer;
+}
