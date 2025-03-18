@@ -1,1 +1,4 @@
 # salon
+
+## Functions:
+- Make appointments.
