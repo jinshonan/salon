@@ -41,7 +41,7 @@
 .stylists, .styles, .environment {
     text-align: center;
     color: #0A2F6C;
-    margin: 50px 0;
+    margin: 80px 0;
 }
 
 .social-icons {
@@ -50,7 +50,7 @@
 }
 
 .social-icons img {
-    width: 40px;
-    margin: 0 15px;
+    width: 20px;
+    margin: 0 5px;
     cursor: pointer;
 }
