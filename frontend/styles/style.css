@@ -54,3 +54,10 @@
     margin: 0 5px;
     cursor: pointer;
 }
+
+.appointment {
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
