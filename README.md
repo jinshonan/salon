@@ -1,4 +1,9 @@
-#  機能:
+#  Frontend:
+
+## REFERENCES
+- vue.js, tailwindcss: one page frontend project, not fully adapted yet (Youtube @TraversyMedia) 
+
+#  Backend:
 
 ## 01. 予約システム
 - 顧客が店員を選択し予約する
