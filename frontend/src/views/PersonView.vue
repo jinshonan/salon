@@ -1,5 +1,4 @@
 <script setup>
-// this is the job detail page
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'  // beautify the loading process?
 import BackButton from '@/components/BackButton.vue';
 import { useRoute, RouterLink, useRouter } from "vue-router";
@@ -18,38 +17,10 @@ const state = reactive({
     isLoading: true
 })
 
-const deleteJob = async () => {
-    try {
-        const confirm = window.confirm('Are you sure you wanna do this?!');
-        if (confirm) {
-            await axios.delete(`/api/jobs/${jobId}`);
-            toast.success('Job deleted');
-            router.push('/jobs');
-        }
-        
-    } catch (error) {
-        console.error('Error deleting job', error);
-        toast.error('Something went wrong!')
-    }
-}
-
-onMounted(async () => {  
-    // almost the same thing as the job listing
-    // instead this one is used to make request
-    try {
-        const response = await axios.get(`/api/jobs/${jobId}`);
-        state.job = response.data;
-    } catch (error) {
-        console.error('Error fetching job', error);
-    } finally {
-        state.isLoading = false;
-    }
-})
-
 </script>
 
 <template>
-    <BackButton />
+    <BackButton /> 
     <section v-if="!state.isLoading" class="bg-blue-50">
       <div class="container m-auto py-10 px-6">
         <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
@@ -107,21 +78,6 @@ onMounted(async () => {
               <h3 class="text-xl">Contact Phone:</h3>
 
               <p class="my-2 bg-blue-100 p-2 font-bold">{{ state.job.company.contactPhone }}</p>
-            </div>
-
-            <!-- Manage -->
-            <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-              <h3 class="text-xl font-bold mb-6">Manage Job</h3>
-              <RouterLink
-                :to="`/jobs/edit/${state.job.id}`"
-                class="bg-blue-500 hover:bg-blue-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                >Edit Job</RouterLink
-              >
-              <button @click="deleteJob"
-                class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-              >
-                Delete Job
-              </button>
             </div>
           </aside>
         </div>

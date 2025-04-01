@@ -14,6 +14,16 @@ const router = createRouter({
             name: 'home',
             component: HomeView,
         },
+        // {
+        //     path: '/staff',
+        //     name: 'staff',
+        //     component: StaffView,
+        // },
+        // {
+        //     path: '/staff/:id',
+        //     name: 'person',
+        //     component: PersonView,
+        // },
         {
             path: '/jobs',
             name: 'jobs',

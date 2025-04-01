@@ -1,4 +1,5 @@
 <script setup>
+// this page is the background for the jobcards
 import JobListing from "./JobListing.vue";
 // import jobData from "@/jobs.json";  // refactored to fetch that from a server
 // import { ref, defineProps, onMounted } from "vue";  // use ref instead of reactive

@@ -1,0 +1,14 @@
+{
+    "persons": [
+      {
+        "name": "静香",
+        "photo": "/assets/img/shizuka.png",
+        "id": "1"
+      },
+      {
+        "name": "佐藤",
+        "photo": "/assets/img/sato.png",
+        "id": "2"
+      }
+    ]
+  }

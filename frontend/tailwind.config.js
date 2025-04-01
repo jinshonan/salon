@@ -7,9 +7,9 @@ export default {
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
       },
-      gridTemplateColumns: {  // to separate the page 
-        "70/30": "70% 28%",
-      },
+      // gridTemplateColumns: {  // to separate the page 
+      //   "70/30": "60% 28%",
+      // },
     },
   },
   variants: {

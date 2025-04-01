@@ -4,11 +4,11 @@
  defineProps({
     title: {
         type: String,
-        default: "こんにちは！"
+        default: "サロン"
     },
     subtitle: {
         type: String,
-        default: "当サロンでは最新のトレンド、シンプルデザインなど幅広く対応します。"
+        default: "私のままでセンスがいい新鮮な毎日を送ること。"
     },
  })
 </script>

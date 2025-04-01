@@ -1,4 +1,5 @@
 <script setup>
+// this page controls the job cards that are shown on the home page
 import { defineProps, ref, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 
