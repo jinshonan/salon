@@ -1,14 +1,44 @@
 {
-    "persons": [
-      {
-        "name": "静香",
-        "photo": "/assets/img/shizuka.png",
-        "id": "1"
+  "persons": [
+    {
+      "name": {
+        "kanji": "静香",
+        "kana": "シズカ"
       },
-      {
-        "name": "佐藤",
-        "photo": "/assets/img/sato.png",
-        "id": "2"
-      }
-    ]
-  }
+      "title": "TOP Stylist",
+      "photo": "/assets/img/shizuka.png",
+      "description": "経験豊富なトップスタイリスト。お客様一人ひとりの魅力を最大限に引き出す、洗練されたスタイル提案が大好評です。髪の悩みも的確なアドバイスで解決へと導きます。",
+      "id": "1"
+    },
+    {
+      "name": {
+        "kanji": "佐藤",
+        "kana": "サトウ"
+      },
+      "title": "Senior Stylist",
+      "photo": "/assets/img/sato.png",
+      "description": "丁寧なカウンセリングと確かな技術力で、お客様のなりたいイメージを形にします。トレンドを取り入れたスタイルから、再現性の高いベーシックスタイルまで幅広く対応。安心してお任せください。",
+      "id": "2"
+    },
+    {
+      "name": {
+        "kanji": "Luffy",
+        "kana": "ルフィ"
+      },
+      "title": "Stylist",
+      "photo": "/assets/img/luffy.png",
+      "description": "明るく元気な接客と、遊び心あふれるクリエイティブなスタイル提案が魅力。お客様を笑顔にする、楽しく新しいヘアスタイルを一緒に見つけましょう！",
+      "id": "3"
+    },
+    {
+      "name": {
+        "kanji": "ウルトラマン",
+        "kana": "ウルトラマン"
+      },
+      "title": "Stylist",
+      "photo": "",
+      "description": "ヒーローのような頼もしさ！どんな髪質や悩みにも、力強く的確な技術で応えます。お客様を理想のスタイルへと導く、まさに救世主のようなスタイリストです。",
+      "id": "4"
+    }
+  ]
+}

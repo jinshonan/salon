@@ -5,83 +5,51 @@ import { useRoute, RouterLink, useRouter } from "vue-router";
 import { reactive, defineProps, onMounted } from "vue";
 import { useToast } from 'vue-toastification';
 import axios from "axios";  // http client for mock backend test
+import personsData from '@/persons.json';
 
 const route = useRoute();
 const router = useRouter();
 const toast = useToast();
 
-const jobId = route.params.id;
-
 const state = reactive({
-    job: {},
+    person: {},
     isLoading: true
 })
+
+onMounted(() => {
+    console.log("Loaded personsData:", personsData); // Debugging
+    
+    if (personsData && Array.isArray(personsData.persons)) {
+        const person = personsData.persons.find(person => person.id === route.params.id);
+        if (person) {
+            state.person = person;
+        } else {
+            console.error("Not found for ID:", route.params.id);
+        }
+    } else {
+        console.error("personsData.persons is not an array or undefined:", personsData);
+    }
+    state.isLoading = false;
+});
 
 </script>
 
 <template>
     <BackButton /> 
-    <section v-if="!state.isLoading" class="bg-blue-50">
-      <div class="container m-auto py-10 px-6">
-        <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
-          <main>
-            <div
-              class="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
-            >
-              <div class="text-gray-500 mb-4">{{ state.job.type }}</div>
-              <h1 class="text-3xl font-bold mb-4">{{ state.job.title }}</h1>
-              <div
-                class="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
-              >
-                <i
-                  class="pi pi-map-marker text-xl text-orange-700 mr-2"
-                ></i>
-                <p class="text-orange-700">{{ state.job.location }}</p>
-              </div>
+    <section v-if="!state.isLoading" class="flex flex-col md:flex-row items-center bg-blue-50 p-10 rounded-lg shadow-lg">
+        <img 
+        :src="state.person.photo || '/assets/img/default.png'" 
+        :alt="state.person.name" class="w-64 h-64 object-cover rounded-lg shadow-md mb-6 md:mb-0 md:mr-6">
+        <div class="text-center md:text-left">
+            <h1 class="text-3xl font-bold">{{ state.person.name.kanji }}</h1>
+            <h2 class="text-lg font-semibold text-gray-700">{{ state.person.title }}</h2>
+            <p class="mt-4 text-gray-600">{{ state.person.description }}</p>
+            <div class="mt-6">
+                <RouterLink :to="`/booking/${state.person.id}`" class="bg-blue-500 text-white px-6 py-2 rounded-lg shadow hover:bg-pink-500 transition">
+                    このスタイリストで予約
+                </RouterLink>
             </div>
-
-            <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-              <h3 class="text-blue-800 text-lg font-bold mb-6">
-                Job Description
-              </h3>
-
-              <p class="mb-4">
-                {{ state.job.description }}
-              </p>
-
-              <h3 class="text-blue-800 text-lg font-bold mb-2">Salary</h3>
-
-              <p class="mb-4">{{ state.job.salary }} / Year</p>
-            </div>
-          </main>
-
-          <!-- Sidebar -->
-          <aside>
-            <!-- Company Info -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h3 class="text-xl font-bold mb-6">Company Info</h3>
-
-              <h2 class="text-2xl">{{ state.job.company.name }}</h2>
-
-              <p class="my-2">
-                {{ state.job.company.description }}
-              </p>
-
-              <hr class="my-4" />
-
-              <h3 class="text-xl">Contact Email:</h3>
-
-              <p class="my-2 bg-blue-100 p-2 font-bold">
-                {{ state.job.company.contactEmail }}
-              </p>
-
-              <h3 class="text-xl">Contact Phone:</h3>
-
-              <p class="my-2 bg-blue-100 p-2 font-bold">{{ state.job.company.contactPhone }}</p>
-            </div>
-          </aside>
         </div>
-      </div>
     </section>
 
     <div v-else class="text-center text-gray-500 py-6">

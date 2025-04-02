@@ -41,7 +41,7 @@ onMounted(async () => {
             </div>
 
             <!-- Show staff when loading is done -->
-            <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div v-else class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <person v-for="person in state.persons.slice(0, state.persons.length)" 
                 :key="person.id" 
                 :person="person" />  

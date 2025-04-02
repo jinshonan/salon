@@ -1,5 +1,5 @@
 <script setup>
- import logo from "/assets/img/logo.png"
+ import logo from "/public/assets/img/logo.png"
  import { RouterLink, useRoute } from "vue-router";
 
  const isActiveLink = (routePath) => {
@@ -33,7 +33,7 @@
                   ]"
                   >Home</RouterLink>
                 <RouterLink 
-                to="/" 
+                to="/staff" 
                 :class="[
                   isActiveLink('/staff') ? 'bg-blue-800' : 'hover:bg-gray-900 hover:text-white', 
                   'text-white', 'px-3', 'py-2', 'rounded-md'
