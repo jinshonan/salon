@@ -9,6 +9,7 @@ const props = defineProps({
     }
 });
 
+// this file is for the cards on the home page
 // Create a computed property for the image path
 const imagePath = computed(() => {
     return props.person?.photo || '/assets/img/default.png'; // Fallback to default if photo is missing

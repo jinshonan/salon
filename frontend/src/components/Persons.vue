@@ -1,5 +1,5 @@
 <script setup>
-// this is the background for showing the staff
+// this is the background for showing the staff ON THE HOMEPAGE
 import person from "./Person.vue";
 import { reactive, defineProps, onMounted } from "vue";
 import { RouterLink } from "vue-router";

@@ -1,0 +1,13 @@
+{
+  "bookings": [
+    {
+      "id": "37b2",
+      "stylistId": "3",
+      "customerName": "桃太郎",
+      "phoneNumber": "110",
+      "course": "カット",
+      "time": "2025-04-17T00:00",
+      "price": 4000
+    }
+  ]
+}

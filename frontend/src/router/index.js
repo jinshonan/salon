@@ -7,6 +7,7 @@ import AddJobView from '@/views/AddJobView.vue';
 import EditJobView from '@/views/EditJobView.vue';
 import StaffView from '@/views/StaffView.vue';
 import PersonView from '@/views/PersonView.vue';
+import BookingView from '@/views/BookingView.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +26,11 @@ const router = createRouter({
             path: '/staff/:id',
             name: 'person',
             component: PersonView,
+        },
+        {
+            path: '/booking/:id',
+            name: 'booking',
+            component: BookingView,
         },
         {
             path: '/jobs',
