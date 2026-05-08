@@ -3,21 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nail Salon Reservation</title>
+    <title>Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-pink-50">
-    <nav class="p-6 bg-white shadow-md">
-        <h1 class="text-2xl font-bold text-pink-600">Salon Name</h1>
+
+<body class="bg-pink-50 text-gray-800">
+
+    <!-- ナビゲーション -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <h1 class="text-3xl font-bold text-pink-500 tracking-wide">
+                Salon
+            </h1>
+
+            <ul class="flex items-center gap-8 text-sm font-medium">
+                <li>
+                    <a href="#" class="hover:text-pink-500 transition">
+                        ホーム
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="hover:text-pink-500 transition">
+                        スタッフ
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="hover:text-pink-500 transition">
+                        メニュー
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#reservation"
+                       class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-2 rounded-full transition shadow-md">
+                        予約する
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
-    
-    <main class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
-        <h2 class="text-xl font-semibold mb-4 text-gray-800">予約へようこそ</h2>
-        <p class="text-gray-600 mb-6">ここから予約時間をチェックできます（予定）。</p>
-        
-        <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full transition duration-300">
-            予約する
-        </button>
+
+    <!-- ヒーローセクション -->
+    <section class="relative overflow-hidden">
+        <div class="bg-gradient-to-r from-pink-200 via-pink-100 to-white">
+            <div class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-10 items-center">
+
+                <!-- 左 -->
+                <div>
+                    <p class="text-pink-500 font-semibold mb-3 tracking-widest">
+                        BEAUTY & RELAXATION
+                    </p>
+
+                    <h2 class="text-5xl font-bold leading-tight mb-6">
+                        あなたの魅力を<br>
+                        もっと自然に。
+                    </h2>
+
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        心地よい空間と丁寧な施術で、
+                        毎日を少し特別に。
+                        ヘア・ネイル・リラクゼーションまで
+                        幅広く対応しています。
+                    </p>
+
+                    <div class="flex gap-4">
+                        <button class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition">
+                            今すぐ予約
+                        </button>
+
+                        <button class="border border-pink-300 hover:bg-pink-100 px-8 py-3 rounded-full transition">
+                            メニューを見る
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 右 -->
+                <div class="flex justify-center">
+                    <div class="w-full h-[400px] rounded-3xl bg-white shadow-2xl overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1200&auto=format&fit=crop"
+                            alt="Salon"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約セクション -->
+    <main id="reservation" class="max-w-5xl mx-auto px-6 py-20">
+
+        <div class="bg-white rounded-3xl shadow-xl p-10 text-center">
+
+            <h3 class="text-3xl font-bold mb-4">
+                ご予約はこちら
+            </h3>
+
+            <p class="text-gray-600 mb-8">
+                ご希望の日時を選択して予約できます。
+            </p>
+
+            <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 shadow-lg">
+                予約ページへ
+            </button>
+
+        </div>
+
     </main>
+
+    <!-- フッター -->
+    <footer class="bg-white border-t mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-10">
+
+            <!-- 店舗情報 -->
+            <div>
+                <h4 class="text-xl font-bold text-pink-500 mb-4">
+                    Salon
+                </h4>
+
+                {% if salon %}
+                <p class="text-gray-600 leading-relaxed">
+                    {{ salon.address }}<br>
+                    TEL: {{ salon.phone }}<br>
+                    Email: {{ salon.email }}
+                </p>
+                {% else %}
+                <p>
+                    店舗情報を準備中です。
+                </p>
+                {% endif %}
+            </div>
+
+            <!-- 営業時間 -->
+            <div>
+                <h4 class="font-semibold mb-4">
+                    営業時間
+                </h4>   
+
+                <ul class="text-gray-600 space-y-2">
+                    <li>平日 10:00 - 20:00</li>
+                    <li>土日 10:00 - 18:00</li>
+                    <li>毎週火曜 定休日</li>
+                </ul>
+            </div>
+
+            <!-- ナビ -->
+            <div>
+                <h4 class="font-semibold mb-4">
+                    Menu
+                </h4>
+
+                <ul class="text-gray-600 space-y-2">
+                    <li><a href="#" class="hover:text-pink-500">ホーム</a></li>
+                    <li><a href="#" class="hover:text-pink-500">スタッフ</a></li>
+                    <li><a href="#" class="hover:text-pink-500">メニュー</a></li>
+                    <li><a href="#" class="hover:text-pink-500">予約</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="border-t py-4 text-center text-sm text-gray-500">
+            © 2026 Salon. All Rights Reserved.
+        </div>
+    </footer>
+
 </body>
 </html>
