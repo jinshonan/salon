@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+スタッフ
+{% endblock %}
+
+{% block content %}
+
+<section class="max-w-6xl mx-auto px-6 py-16">
+
+    <div class="text-center mb-14">
+
+        <p class="text-pink-500 font-semibold tracking-widest mb-2">
+            STAFF
+        </p>
+
+        <h2 class="text-4xl font-bold mb-4">
+            スタッフ紹介
+        </h2>
+
+        <p class="text-gray-600">
+            経験豊富なスタッフが丁寧に対応いたします。
+        </p>
+
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {% for staff in staffs %}
+
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition duration-300">
+
+            <!-- 上部 -->
+            <div class="h-40 bg-gradient-to-r from-pink-200 to-pink-100 flex items-center justify-center">
+
+                <div class="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center text-3xl font-bold text-pink-500">
+                    {{ staff.name[0] }}
+                </div>
+
+            </div>
+
+            <!-- 本体 -->
+            <div class="p-8 text-center">
+
+                <h3 class="text-2xl font-bold mb-2">
+                    {{ staff.name }}
+                </h3>
+
+                <!-- role -->
+                <div class="mb-5">
+
+                    {% if staff.role == "owner" %}
+                    <span class="bg-yellow-100 text-yellow-700 text-sm px-4 py-1 rounded-full">
+                        オーナー
+                    </span>
+
+                    {% elif staff.role == "nail_artist" %}
+                    <span class="bg-pink-100 text-pink-500 text-sm px-4 py-1 rounded-full">
+                        ネイルアーティスト
+                    </span>
+
+                    {% elif staff.role == "trainee" %}
+                    <span class="bg-gray-200 text-gray-700 text-sm px-4 py-1 rounded-full">
+                        研修中
+                    </span>
+                    {% endif %}
+
+                </div>
+
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    丁寧なカウンセリングと
+                    心地よい施術を心がけています。
+                </p>
+
+                <a href="/reserve"
+                   class="block bg-pink-500 hover:bg-pink-600 text-white py-3 rounded-2xl font-semibold transition">
+
+                    指名して予約
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
