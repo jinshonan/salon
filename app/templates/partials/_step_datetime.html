@@ -1,0 +1,82 @@
+<!-- STEP 3: 日時選択 -->
+<div id="step-3" class="hidden">
+
+    <h3 class="text-2xl font-bold mb-8">
+        日時選択
+    </h3>
+
+    <!-- 日付 -->
+    <div class="mb-8">
+
+        <label class="block font-semibold mb-2">
+            日付
+        </label>
+
+        <input
+            type="date"
+            name="date"
+            required
+            class="w-full border rounded-2xl p-4"
+        >
+
+    </div>
+
+    <!-- 時間（将来: shiftLoader.js が動的に差し替える） -->
+    <div class="mb-8">
+
+        <label class="block font-semibold mb-2">
+            時間
+        </label>
+
+        <select
+            id="time-select"
+            name="time"
+            required
+            class="w-full border rounded-2xl p-4">
+
+            <option value="">選択してください</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+
+        </select>
+
+    </div>
+
+    <!-- お客様へのメモ欄 -->
+    <div class="mb-10">
+
+        <label class="block font-semibold mb-2">
+            ご要望・備考
+            <span class="text-gray-400 font-normal text-sm ml-1">（任意）</span>
+        </label>
+
+        <textarea
+            name="customer_notes"
+            rows="3"
+            placeholder="アレルギーや気になる点などがあればご記入ください"
+            class="w-full border rounded-2xl p-4 resize-none">
+        </textarea>
+
+    </div>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between">
+
+        <button
+            type="button"
+            id="btn-back-step2"
+            class="border border-gray-300 px-8 py-3 rounded-full hover:bg-gray-50 transition">
+            戻る
+        </button>
+
+        <button
+            type="submit"
+            class="bg-pink-500 hover:bg-pink-600 text-white px-10 py-4 rounded-full transition">
+            予約を確定
+        </button>
+
+    </div>
+
+</div>

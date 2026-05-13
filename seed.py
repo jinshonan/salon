@@ -54,7 +54,7 @@ def seed():
                 name="桐生 一馬",
                 role=StaffRole.OWNER.value,
                 email="owner@spunk-salon.jp",
-                hashed_password=generate_password_hash("password123"),
+                hashed_password=generate_password_hash("1234"),
             ),
 
             StaffORM(
@@ -62,7 +62,7 @@ def seed():
                 name="佐藤 美咲",
                 role=StaffRole.NAIL_ARTIST.value,
                 email="misaki@spunk-salon.jp",
-                hashed_password=generate_password_hash("password123"),
+                hashed_password=generate_password_hash("1234"),
             ),
 
             StaffORM(
@@ -70,7 +70,7 @@ def seed():
                 name="鈴木 彩",
                 role=StaffRole.TRAINEE.value,
                 email="aya@spunk-salon.jp",
-                hashed_password=generate_password_hash("password123"),
+                hashed_password=generate_password_hash("1234"),
             ),
         ]
 
@@ -86,6 +86,7 @@ def seed():
                 email="yuko@example.com",
                 phone="090-1111-2222",
                 notes="ジェルネイル希望",
+                password=generate_password_hash("1234"),
             ),
 
             CustomerORM(
@@ -93,6 +94,7 @@ def seed():
                 email="rina@example.com",
                 phone="090-3333-4444",
                 notes="爪が弱め",
+                password=generate_password_hash("1234"),
             ),
         ]
 

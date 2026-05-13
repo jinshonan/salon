@@ -1,0 +1,111 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Salon{% endblock %}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-pink-50 text-gray-800">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <h1 class="text-3xl font-bold text-pink-500">
+                Salon
+            </h1>
+
+            <ul class="flex items-center gap-8 text-sm font-medium">
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/staffs">スタッフ</a></li>
+                <li><a href="/menus">メニュー</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <main>
+        <div class="min-h-[calc(100vh-200px)] flex items-center justify-center px-6 py-12">
+        <div class="w-full max-w-md">
+            <!-- カードコンテナ -->
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                
+                <!-- 上部アクセントカラー -->
+                <div class="bg-gradient-to-r from-pink-400 to-pink-300 h-2"></div>
+
+                <div class="p-8 md:p-10">
+                    <!-- ヘッダー -->
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h2>
+                        <p class="text-gray-500">サロンのログインアカウントを入力してください</p>
+                    </div>
+
+                    <!-- フォーム -->
+                    <form action="/login" method="POST" class="space-y-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">メールアドレス</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required 
+                                placeholder="example@mail.com"
+                                class="w-full px-4 py-3 rounded-xl border border-pink-100 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition duration-200 bg-pink-50/30"
+                            >
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="password" class="block text-sm font-medium text-gray-700">パスワード</label>
+                                <a href="#" class="text-xs text-pink-500 hover:underline">パスワードを忘れた場合</a>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                required 
+                                placeholder="••••••••"
+                                class="w-full px-4 py-3 rounded-xl border border-pink-100 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition duration-200 bg-pink-50/30"
+                            >
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember" name="remember" class="w-4 h-4 text-pink-500 border-pink-300 rounded focus:ring-pink-500">
+                            <label for="remember" class="ml-2 text-sm text-gray-600">ログイン状態を保持する</label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-full shadow-lg transition duration-300 transform hover:-translate-y-0.5">
+                            ログイン
+                        </button>
+                    </form>
+
+                    <!-- フッターリンク -->
+                    <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+                        <p class="text-sm text-gray-600">
+                            アカウントをお持ちでないですか？
+                            <a href="/register" class="text-pink-500 font-semibold hover:underline">新規会員登録</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 戻るリンク -->
+            <div class="text-center mt-6">
+                <a href="/" class="text-sm text-gray-500 hover:text-pink-500 transition flex items-center justify-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    ホームへ戻る
+                </a>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    {% include "components/footer.html" %}
+
+</body>
+</html>

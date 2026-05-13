@@ -3,6 +3,12 @@
 
 ---
 
+## To-dos
+- Improve the logic for making reservations (need to add login: attemped to add the logic yet password was not needed in seed.py)
+- Fix the logic for making reservations from staff page (staff selection is not needed)
+
+---
+
 ## 🛠 テックスタック (Tech Stack)
 
 ### Backend

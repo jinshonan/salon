@@ -113,6 +113,7 @@ class Customer:
     id: Optional[int]
     name: str
     email: Email
+    password: str # 追加 flask-loginのため
     phone: PhoneNumber
     notes: str = ""          # アレルギーや要望などの備考
     created_at: datetime = field(default_factory=datetime.now)

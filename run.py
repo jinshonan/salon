@@ -5,6 +5,7 @@ import os
 
 from app.interface.routes import main_bp
 from app.infrastructure.database import init_db, migrate  # migrateをインポート
+from app.infrastructure.auth import init_auth  # 追加
 
 
 def create_app():
@@ -18,6 +19,10 @@ def create_app():
 
     # DB初期化
     init_db(app)
+
+    # auth初期化
+    init_auth(app)  # 追加
+
     app.register_blueprint(main_bp)
 
     return app

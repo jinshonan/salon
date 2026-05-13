@@ -1,0 +1,73 @@
+<!-- STEP 2 -->
+<div id="step-2" class="hidden">
+
+    <h3 class="text-2xl font-bold mb-8">
+        スタッフ選択
+    </h3>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+        {% for staff in staffs %}
+
+        <label class="cursor-pointer">
+
+            <input
+                type="radio"
+                name="staff_id"
+                value="{{ staff.id }}"
+                class="hidden peer"
+                required
+            >
+
+            <div class="border-2 border-gray-200 rounded-3xl p-6
+                        peer-checked:border-pink-500
+                        peer-checked:bg-pink-50
+                        hover:border-pink-300 transition">
+
+                <div class="w-20 h-20 rounded-full bg-pink-100
+                            flex items-center justify-center
+                            text-2xl font-bold text-pink-500 mx-auto mb-5">
+
+                    {{ staff.name[0] }}
+
+                </div>
+
+                <h4 class="font-bold text-lg text-center mb-2">
+                    {{ staff.name }}
+                </h4>
+
+                <p class="text-center text-gray-500 text-sm">
+                    {{ staff.role }}
+                </p>
+
+            </div>
+
+        </label>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="flex justify-between">
+
+        <button
+            type="button"
+            id="btn-back-step1"
+            class="border border-gray-300 px-8 py-3 rounded-full">
+
+            戻る
+
+        </button>
+
+        <button
+            type="button"
+            id="btn-go-step3"
+            class="bg-pink-500 hover:bg-pink-600 text-white px-10 py-4 rounded-full">
+
+            日時選択へ
+
+        </button>
+
+    </div>
+
+</div>

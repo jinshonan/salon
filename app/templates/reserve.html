@@ -10,98 +10,22 @@
 
     <div class="bg-white rounded-3xl shadow-xl p-10">
 
-        <h2 class="text-3xl font-bold mb-10 text-center">
-            ご予約
-        </h2>
+        {% include "partials/_step_bar.html" %}
 
-        <!-- STEP 1 -->
-        <div class="mb-10">
+        <!-- FORM -->
+        <form method="POST">
 
-            <h3 class="text-xl font-semibold mb-4">
-                1. メニューを選択
-            </h3>
+            {% include "partials/_step_menu.html" %}
+            {% include "partials/_step_staff.html" %}
+            {% include "partials/_step_datetime.html" %} 
 
-            <div class="grid md:grid-cols-3 gap-4">
-
-                {% for menu in menus %}
-                <div class="border rounded-2xl p-5 hover:border-pink-400 cursor-pointer transition">
-
-                    <h4 class="font-bold text-lg mb-2">
-                        {{ menu.name }}
-                    </h4>
-
-                    <p class="text-sm text-gray-600 mb-3">
-                        {{ menu.description }}
-                    </p>
-
-                    <p class="text-pink-500 font-bold">
-                        ¥{{ menu.price }}
-                    </p>
-
-                </div>
-                {% endfor %}
-
-            </div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="mb-10">
-
-            <h3 class="text-xl font-semibold mb-4">
-                2. スタッフを選択
-            </h3>
-
-            <div class="grid md:grid-cols-3 gap-4">
-
-                {% for staff in staffs %}
-                <div class="border rounded-2xl p-5 hover:border-pink-400 cursor-pointer transition">
-
-                    <p class="font-bold">
-                        {{ staff.name }}
-                    </p>
-
-                    <p class="text-sm text-gray-500">
-                        {{ staff.role }}
-                    </p>
-
-                </div>
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        <!-- STEP 3 -->
-        <div>
-
-            <h3 class="text-xl font-semibold mb-4">
-                3. 時間を選択
-            </h3>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-
-                <button class="bg-pink-100 hover:bg-pink-400 hover:text-white rounded-xl py-3 transition">
-                    10:00
-                </button>
-
-                <button class="bg-pink-100 hover:bg-pink-400 hover:text-white rounded-xl py-3 transition">
-                    11:00
-                </button>
-
-                <button class="bg-pink-100 hover:bg-pink-400 hover:text-white rounded-xl py-3 transition">
-                    13:00
-                </button>
-
-                <button class="bg-pink-100 hover:bg-pink-400 hover:text-white rounded-xl py-3 transition">
-                    14:00
-                </button>
-
-            </div>
-
-        </div>
+        </form>
 
     </div>
 
 </section>
+
+<!-- JS -->
+ <script type="module" src="{{ url_for('static', filename='js/reserve/main.js') }}"></script>
 
 {% endblock %}

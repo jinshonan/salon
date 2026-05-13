@@ -7,6 +7,7 @@ domain/models.py とは完全に独立している。
 
 from datetime import datetime
 from app.infrastructure.database import db
+from flask_login import UserMixin
 
 
 # ---------------------------------------------------------------------------
@@ -56,18 +57,20 @@ class StaffORM(db.Model):
 
     def __repr__(self) -> str:
         return f"<StaffORM id={self.id} name={self.name}>"
-
+    
 
 # ---------------------------------------------------------------------------
 # CustomerORM
 # ---------------------------------------------------------------------------
 
-class CustomerORM(db.Model):
+class CustomerORM(db.Model, UserMixin): # UserMixinを追加
     __tablename__ = "customers"
 
     id         = db.Column(db.Integer,     primary_key=True)
     name       = db.Column(db.String(100), nullable=False)
     email      = db.Column(db.String(255), nullable=False, unique=True)
+    # パスワード保存用のカラムを追加（ハッシュ化して保存するため長めに設定）
+    password   = db.Column(db.String(255), nullable=False) 
     phone      = db.Column(db.String(20),  nullable=False)
     notes      = db.Column(db.Text,        nullable=False, default="")
     created_at = db.Column(db.DateTime,    nullable=False, default=datetime.now)
