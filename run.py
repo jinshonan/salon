@@ -3,7 +3,9 @@
 from flask import Flask
 import os
 
-from app.interface.routes import main_bp
+from app.interface.main_bp import main_bp
+import app.interface  # route登録用: app\interface\init.py
+
 from app.infrastructure.database import init_db, migrate 
 from app.infrastructure.auth import init_auth  
 
@@ -27,6 +29,7 @@ def create_app():
     # auth初期化
     init_auth(app) 
 
+    # ルート初期化
     app.register_blueprint(main_bp)
 
     return app

@@ -5,6 +5,8 @@ from datetime import datetime
 from flask import redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
+from app.interface.main_bp import main_bp
+
 from app.infrastructure.orm_models import (
     MenuORM,
     ReservationMenuORM,

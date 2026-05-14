@@ -1,5 +1,4 @@
 # app\interface\routes.py
-
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session, abort
 from app.infrastructure.database import db
 from werkzeug.security import check_password_hash
@@ -7,14 +6,7 @@ from app.infrastructure.orm_models import SalonORM, StaffORM, MenuORM, CustomerO
 
 from flask_login import login_user, logout_user, current_user, login_required
 
-# Blueprintの作成
-# 'main'はBlueprintの名前
-# template_folderは、このファイル(routes.py)から見た相対パスで指定します
-main_bp = Blueprint(
-    'main', 
-    __name__, 
-    template_folder='../templates'  # デフォルト？
-)
+from app.interface.main_bp import main_bp
 
 @main_bp.route("/")
 def home():
@@ -67,25 +59,25 @@ def mypage():
     return render_template("mypage.html", user=current_user)
 
 
-@main_bp.route("/reserve")
-def reserve():
+# @main_bp.route("/reserve")
+# def reserve():
 
-    salon = SalonORM.query.first()
+#     salon = SalonORM.query.first()
 
-    staffs = StaffORM.query.filter_by(
-        is_active=True
-    ).all()
+#     staffs = StaffORM.query.filter_by(
+#         is_active=True
+#     ).all()
 
-    menus = MenuORM.query.filter_by(
-        is_active=True
-    ).all()
+#     menus = MenuORM.query.filter_by(
+#         is_active=True
+#     ).all()
 
-    return render_template(
-        "reserve.html",
-        salon=salon,
-        staffs=staffs,
-        menus=menus,
-    )
+#     return render_template(
+#         "reserve.html",
+#         salon=salon,
+#         staffs=staffs,
+#         menus=menus,
+#     )
 
 
 @main_bp.route("/staffs")
