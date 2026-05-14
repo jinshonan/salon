@@ -59,6 +59,7 @@ def reserve():
             )
 
         # ── DB書き込み ────────────────────────────────────────
+        # 1. 予約のメインレコードを作成
         reservation = ReservationORM(
             salon_id       = salon.id,
             customer_id    = current_user.id,   # flask-login
@@ -70,9 +71,20 @@ def reserve():
         db.session.add(reservation)
         db.session.flush()  # reservation.id を確定させてから中間テーブルへ
 
+        # 2. 選択されたメニューのマスター情報を取得する（← ここが重要！）
+        selected_menu = MenuORM.query.get(menu_id)
+
+        if not selected_menu:
+            # メニューが見つからない場合のハンドリング
+            return "Menu not found", 400
+
+        # 3. 中間テーブルに「その時点の情報」をコピーして保存
         reservation_menu = ReservationMenuORM(
-            reservation_id = reservation.id,
-            menu_id        = menu_id,
+            reservation_id   = reservation.id,
+            menu_id          = selected_menu.id,
+            menu_name        = selected_menu.name,           # 名前をコピー
+            price_snapshot   = selected_menu.price,          # 価格をコピー
+            duration_minutes = selected_menu.duration_minutes # 時間をコピー
         )
         db.session.add(reservation_menu)
         db.session.commit()
@@ -87,3 +99,39 @@ def reserve():
         staffs=staffs,
         menus=menus,
     )
+
+
+"""
+pending -> confirmed
+"""
+
+@main_bp.route("/reserve/confirm/<int:reservation_id>")
+@login_required
+def reserve_confirm(reservation_id: int):
+
+    reservation = ReservationORM.query.filter_by(
+        id          = reservation_id,
+        customer_id = current_user.id,
+        status      = "pending",          # pending 以外は表示しない
+    ).first_or_404()
+
+    return render_template(
+        "reserve_confirm.html",
+        reservation = reservation,
+    )
+
+
+@main_bp.route("/reserve/confirm/<int:reservation_id>/commit", methods=["POST"])
+@login_required
+def reserve_confirm_post(reservation_id: int):
+
+    reservation = ReservationORM.query.filter_by(
+        id          = reservation_id,
+        customer_id = current_user.id,
+        status      = "pending",          # 二重送信対策：pending のみ更新
+    ).first_or_404()
+
+    reservation.status = "confirmed"
+    db.session.commit()
+
+    return redirect(url_for("main.mypage"))

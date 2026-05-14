@@ -1,0 +1,102 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}予約内容の確認 | Salon{% endblock %}
+
+{% block content %}
+<div class="bg-pink-50 min-h-screen py-16">
+    <div class="max-w-xl mx-auto px-6">
+
+        <div class="bg-white rounded-3xl shadow-xl p-10">
+
+            <!-- ヘッダー -->
+            <div class="text-center mb-10">
+                <p class="text-pink-500 font-semibold tracking-widest mb-2">CONFIRMATION</p>
+                <h2 class="text-3xl font-bold text-gray-800">予約内容の確認</h2>
+                <p class="text-gray-400 text-sm mt-2">内容をご確認のうえ、予約を確定してください</p>
+            </div>
+
+            <!-- 予約詳細 -->
+            <dl class="divide-y divide-gray-100 mb-10">
+
+                <!-- メニュー -->
+                {% with menu = reservation.menus[0].menu %}
+                <div class="flex justify-between py-4">
+                    <dt class="text-gray-500 text-sm font-medium">メニュー</dt>
+                    <dd class="text-gray-800 font-semibold text-right">
+                        {{ menu.name }}
+                    </dd>
+                </div>
+
+                <div class="flex justify-between py-4">
+                    <dt class="text-gray-500 text-sm font-medium">金額</dt>
+                    <dd class="text-pink-500 font-bold">
+                        ¥{{ menu.price }}
+                    </dd>
+                </div>
+
+                <div class="flex justify-between py-4">
+                    <dt class="text-gray-500 text-sm font-medium">所要時間</dt>
+                    <dd class="text-gray-800">
+                        {{ menu.duration_minutes }} 分
+                    </dd>
+                </div>
+                {% endwith %}
+
+                <!-- スタッフ -->
+                <div class="flex justify-between py-4">
+                    <dt class="text-gray-500 text-sm font-medium">担当スタッフ</dt>
+                    <dd class="text-gray-800 font-semibold">
+                        {{ reservation.staff.name }}
+                    </dd>
+                </div>
+
+                <!-- 予約日時 -->
+                <div class="flex justify-between py-4">
+                    <dt class="text-gray-500 text-sm font-medium">予約日時</dt>
+                    <dd class="text-gray-800 font-semibold">
+                        {{ reservation.start_at.strftime("%Y年%m月%d日 %H:%M") }}
+                    </dd>
+                </div>
+
+                <!-- 備考 -->
+                {% if reservation.customer_notes %}
+                <div class="py-4">
+                    <dt class="text-gray-500 text-sm font-medium mb-1">備考</dt>
+                    <dd class="text-gray-700 text-sm whitespace-pre-line">
+                        {{ reservation.customer_notes }}
+                    </dd>
+                </div>
+                {% endif %}
+
+            </dl>
+
+            <!-- アクション -->
+            <div class="flex flex-col gap-3">
+
+                <!-- 確定ボタン -->
+                <form
+                    method="POST"
+                    action="{{ url_for('main.reserve_confirm_post', reservation_id=reservation.id) }}">
+                    <button
+                        type="submit"
+                        class="w-full bg-pink-500 hover:bg-pink-600
+                               text-white font-semibold py-4 rounded-full transition">
+                        この内容で予約を確定する
+                    </button>
+                </form>
+
+                <!-- 戻るリンク -->
+                <a
+                    href="{{ url_for('main.reserve') }}"
+                    class="block w-full text-center border border-gray-300
+                           text-gray-500 hover:bg-gray-50 py-4 rounded-full transition text-sm">
+                    予約内容を変更する
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

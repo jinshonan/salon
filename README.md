@@ -4,7 +4,7 @@
 ---
 
 ## To-dos
-- Improve the logic for making reservations from the home page (need customer info)
+- Improve the logic for making reservations from the home page: make reservations appear on user mypage
 - Fix the logic for making reservations from staff page (staff selection is not needed)
 
 ---
