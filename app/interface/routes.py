@@ -5,7 +5,7 @@ from app.infrastructure.database import db
 from werkzeug.security import check_password_hash
 from app.infrastructure.orm_models import SalonORM, StaffORM, MenuORM, CustomerORM
 
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 
 # Blueprintの作成
 # 'main'はBlueprintの名前
@@ -59,6 +59,12 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for("main.home"))
+
+
+@main_bp.route("/mypage")
+@login_required
+def mypage():
+    return render_template("mypage.html", user=current_user)
 
 
 @main_bp.route("/reserve")

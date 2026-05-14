@@ -2,110 +2,81 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Salon{% endblock %}</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Salon{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>body{font-family:'Nunito',sans-serif}</style>
 </head>
+<body class="min-h-screen flex">
 
-<body class="bg-pink-50 text-gray-800">
+  <!-- Left: Brand panel -->
+  <div class="hidden md:flex w-1/2 bg-gradient-to-br from-fuchsia-500 via-pink-500 to-red-400 flex-col justify-between p-12 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20" style="background:radial-gradient(circle at 80% 20%,#fff 0%,transparent 50%),radial-gradient(circle at 10% 90%,#fff 0%,transparent 40%)"></div>
+    <span class="text-white font-extrabold text-2xl tracking-widest z-10">SALON ✦</span>
+    <div class="z-10">
+      <p class="text-white/70 text-sm uppercase tracking-widest mb-3">Members only</p>
+      <h1 class="text-white font-extrabold text-5xl leading-tight">Your glow<br>starts<br><span class="text-yellow-200">here.</span></h1>
+      <p class="text-white/70 mt-4 text-sm leading-relaxed">美しさは、毎日の積み重ね。<br>あなたのペースで、輝こう。</p>
+    </div>
+    <div class="flex gap-3 z-10">
+      <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur"></div>
+      <div class="w-6 h-6 rounded-full bg-yellow-200/50 self-end"></div>
+      <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur self-end"></div>
+    </div>
+  </div>
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+  <!-- Right: Form panel -->
+  <div class="w-full md:w-1/2 flex items-center justify-center bg-white px-8 py-12">
+    <div class="w-full max-w-sm">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-1">おかえり！👋</h2>
+      <p class="text-gray-400 text-sm mb-8">ログインしてサロンへ</p>
 
-            <h1 class="text-3xl font-bold text-pink-500">
-                Salon
-            </h1>
-
-            <ul class="flex items-center gap-8 text-sm font-medium">
-                <li><a href="/">ホーム</a></li>
-                <li><a href="/staffs">スタッフ</a></li>
-                <li><a href="/menus">メニュー</a></li>
-            </ul>
-
+      <form action="/login" method="POST" class="space-y-5">
+        <div>
+          <label class="block text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1.5" for="email">メールアドレス</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com" autocomplete="email"
+            class="w-full px-4 py-3 rounded-2xl bg-gray-50 border border-gray-100 text-gray-800 text-sm placeholder-gray-300 focus:outline-none focus:border-fuchsia-400 focus:ring-2 focus:ring-fuchsia-100 transition">
         </div>
-    </nav>
 
-    <main>
-        <div class="min-h-[calc(100vh-200px)] flex items-center justify-center px-6 py-12">
-        <div class="w-full max-w-md">
-            <!-- カードコンテナ -->
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
-                
-                <!-- 上部アクセントカラー -->
-                <div class="bg-gradient-to-r from-pink-400 to-pink-300 h-2"></div>
-
-                <div class="p-8 md:p-10">
-                    <!-- ヘッダー -->
-                    <div class="text-center mb-10">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h2>
-                        <p class="text-gray-500">サロンのログインアカウントを入力してください</p>
-                    </div>
-
-                    <!-- フォーム -->
-                    <form action="/login" method="POST" class="space-y-6">
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">メールアドレス</label>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                required 
-                                placeholder="example@mail.com"
-                                class="w-full px-4 py-3 rounded-xl border border-pink-100 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition duration-200 bg-pink-50/30"
-                            >
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <label for="password" class="block text-sm font-medium text-gray-700">パスワード</label>
-                                <a href="#" class="text-xs text-pink-500 hover:underline">パスワードを忘れた場合</a>
-                            </div>
-                            <input 
-                                type="password" 
-                                id="password" 
-                                name="password" 
-                                required 
-                                placeholder="••••••••"
-                                class="w-full px-4 py-3 rounded-xl border border-pink-100 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition duration-200 bg-pink-50/30"
-                            >
-                        </div>
-
-                        <div class="flex items-center">
-                            <input type="checkbox" id="remember" name="remember" class="w-4 h-4 text-pink-500 border-pink-300 rounded focus:ring-pink-500">
-                            <label for="remember" class="ml-2 text-sm text-gray-600">ログイン状態を保持する</label>
-                        </div>
-
-                        <button type="submit" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-full shadow-lg transition duration-300 transform hover:-translate-y-0.5">
-                            ログイン
-                        </button>
-                    </form>
-
-                    <!-- フッターリンク -->
-                    <div class="mt-8 pt-6 border-t border-gray-100 text-center">
-                        <p class="text-sm text-gray-600">
-                            アカウントをお持ちでないですか？
-                            <a href="/register" class="text-pink-500 font-semibold hover:underline">新規会員登録</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 戻るリンク -->
-            <div class="text-center mt-6">
-                <a href="/" class="text-sm text-gray-500 hover:text-pink-500 transition flex items-center justify-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    ホームへ戻る
-                </a>
-            </div>
+        <div>
+          <div class="flex justify-between items-center mb-1.5">
+            <label class="text-xs font-semibold text-gray-400 uppercase tracking-widest" for="password">パスワード</label>
+            <a href="#" class="text-xs text-fuchsia-500 hover:text-fuchsia-700 font-bold transition">忘れた？</a>
+          </div>
+          <div class="relative">
+            <input id="password" name="password" type="password" required placeholder="••••••••" autocomplete="current-password"
+              class="w-full px-4 py-3 rounded-2xl bg-gray-50 border border-gray-100 text-gray-800 text-sm placeholder-gray-300 focus:outline-none focus:border-fuchsia-400 focus:ring-2 focus:ring-fuchsia-100 transition pr-11">
+            <button type="button" id="togglePw" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-fuchsia-500 transition" aria-label="パスワードを表示">
+              <svg id="eyeIco" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
         </div>
-        </div>
-    </main>
 
-    {% include "components/footer.html" %}
+        <label class="flex items-center gap-2 cursor-pointer select-none">
+          <input type="checkbox" name="remember" class="w-4 h-4 rounded accent-fuchsia-500">
+          <span class="text-sm text-gray-400">ログイン状態を保持する</span>
+        </label>
 
+        <button type="submit"
+          class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-bold text-sm tracking-wide hover:from-fuchsia-600 hover:to-pink-600 active:scale-95 transition-all shadow-lg shadow-pink-200">
+          ログイン →
+        </button>
+      </form>
+
+      <p class="text-center text-sm text-gray-400 mt-8">まだアカウントがない？ <a href="/register" class="text-fuchsia-500 font-bold hover:underline">新規登録</a></p>
+      <div class="text-center mt-4"><a href="/" class="text-xs text-gray-300 hover:text-gray-500 transition">← ホームへ戻る</a></div>
+    </div>
+  </div>
+
+  <script>
+    const pw=document.getElementById('password'),btn=document.getElementById('togglePw'),ico=document.getElementById('eyeIco');
+    btn.onclick=()=>{const s=pw.type==='password';pw.type=s?'text':'password';ico.style.opacity=s?0.5:1};
+  </script>
+  <script type="module" src="{{ url_for('static', filename='js/login.js') }}"></script>
 </body>
 </html>

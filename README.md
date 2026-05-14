@@ -4,7 +4,7 @@
 ---
 
 ## To-dos
-- Improve the logic for making reservations (need to add login: attemped to add the logic yet password was not needed in seed.py)
+- Improve the logic for making reservations from the home page (need customer info)
 - Fix the logic for making reservations from staff page (staff selection is not needed)
 
 ---

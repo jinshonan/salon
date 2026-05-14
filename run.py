@@ -4,9 +4,13 @@ from flask import Flask
 import os
 
 from app.interface.routes import main_bp
-from app.infrastructure.database import init_db, migrate  # migrateをインポート
-from app.infrastructure.auth import init_auth  # 追加
+from app.infrastructure.database import init_db, migrate 
+from app.infrastructure.auth import init_auth  
 
+from dotenv import load_dotenv  
+
+# アプリ生成の前に環境変数を読み込む
+load_dotenv()
 
 def create_app():
     # Flaskオブジェクトの生成
@@ -15,13 +19,13 @@ def create_app():
     # DB設定
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///salon.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')  # .envにある
-
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'develop-mode-tiny-secret')
+    
     # DB初期化
     init_db(app)
 
     # auth初期化
-    init_auth(app)  # 追加
+    init_auth(app) 
 
     app.register_blueprint(main_bp)
 

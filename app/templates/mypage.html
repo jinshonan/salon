@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}マイページ | Salon{% endblock %}
+
+{% block content %}
+<div class="bg-pink-50 min-h-screen py-12">
+    <div class="max-w-4xl mx-auto px-6">
+        
+        <header class="mb-10">
+            <h2 class="text-3xl font-bold text-gray-800">マイページ</h2>
+            <p class="text-gray-500">こんにちは、{{ current_user.name }} 様</p>
+        </header>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- 左側：プロフィールカード -->
+            <div class="bg-white rounded-3xl shadow-sm p-8 flex flex-col items-center">
+                <div class="w-24 h-24 bg-pink-100 rounded-full flex items-center justify-center mb-4">
+                    <span class="text-3xl">🌸</span>
+                </div>
+                <h3 class="font-bold text-xl mb-1">{{ current_user.name }}</h3>
+                <p class="text-sm text-gray-400 mb-6">{{ current_user.email }}</p>
+                <button class="w-full py-2 border border-pink-200 rounded-full text-pink-500 text-sm hover:bg-pink-50 transition">
+                    プロフィール編集
+                </button>
+                <button>
+                    <a href="/logout" class="text-gray-400 hover:text-red-400 transition text-xs">ログアウト</a>
+                </button>
+            </div>
+
+            <!-- 右側：メインコンテンツ -->
+            <div class="md:col-span-2 space-y-6">
+                <!-- 予約状況 -->
+                <div class="bg-white rounded-3xl shadow-sm p-8">
+                    <h4 class="font-bold text-lg mb-4 border-b pb-2">現在の予約状況</h4>
+                    {% if current_user.reservations %}
+                        <!-- 予約がある場合のリスト表示 -->
+                    {% else %}
+                        <p class="text-gray-400 text-sm py-4">現在、予定されている予約はありません。</p>
+                        <a href="/reserve" class="inline-block text-pink-500 font-semibold text-sm hover:underline">
+                            新しい予約を入れる →
+                        </a>
+                    {% endif %}
+                </div>
+
+                <!-- 会員特典・お知らせ -->
+                <div class="bg-gradient-to-br from-pink-400 to-rose-400 rounded-3xl shadow-lg p-8 text-white">
+                    <h4 class="font-bold text-lg mb-2">お得情報</h4>
+                    <p class="text-pink-50 opacity-90 text-sm leading-relaxed">
+                        いつもご利用ありがとうございます。会員様限定のクーポンやキャンペーン情報をこちらでお届けします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
